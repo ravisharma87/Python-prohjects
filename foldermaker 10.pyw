@@ -1,7 +1,3 @@
-'''1:use image as button
-    2:use pictures in background
-    3:make it look atractive somewhat'''
-
 from tkinter import *
 import tkinter.messagebox as msg
 import random
@@ -87,13 +83,14 @@ def main():
     reset()
 
 def hlp():
-    msg.showinfo('Help', '1:Give main folder names\n2:Give subfolder names\n3:Press Save button\n4:Select Folder')
+    msg.showinfo('Help', '1:Give main folder names\n2:Give subfolder names\n3:Press Save button\n4:Select Folder\n'
+                         '!!! Do not leave extra line after folder name !!!')
 
 
 root = Tk()
-root.geometry("725x410")
-root.maxsize(725, 410)
-root.minsize(725, 410)
+root.geometry("733x360")
+root.maxsize(733, 360)
+root.minsize(733, 360)
 root.title('Folder maker-By Ravi sharma')
 root.wm_iconbitmap("folder.ico")
 root.config(background="grey")
@@ -107,9 +104,9 @@ photo3 = Image.open("../foldermakerauto/noteeeeee.png")
 resized3 = photo3.resize((700, 70), Image.ANTIALIAS)
 note = ImageTk.PhotoImage(resized3)
 frame3 = customtkinter.CTkFrame(root, border_width=3, corner_radius=10)
-frame3.grid(columnspan=4)
+frame3.grid(columnspan=4,padx=3)
 frame1 = customtkinter.CTkFrame(frame3, bg='skyblue', corner_radius=10)
-frame1.grid(pady=5, padx=3)
+frame1.grid(pady=5, padx=5)
 frame2 = customtkinter.CTkFrame(frame3, width=100, height=50, bg='skyblue', corner_radius=10)
 frame2.grid(row=0, column=1, pady=3)
 scrollbar = customtkinter.CTkScrollbar(frame1)
@@ -126,12 +123,11 @@ sub_text_input = Text(frame2, fg="lightgreen", width=30, height=8, yscrollcomman
 sub_text_input.grid(row=2)
 customtkinter.CTkButton(root, text="Generate", text_font="arial 20", image=create, command=main, borderwidth=0,
                         corner_radius=10) \
-    .grid(row=3, column=1, pady=20)
+    .grid(row=3, column=3, pady=40)
 customtkinter.CTkButton(root, text="Reset", text_font="arial 20", image=reseter, width=100, command=reset,
                         borderwidth=0, corner_radius=10) \
-    .grid(row=3)
+    .grid(row=3,column=2)
 help = Menu(root)
 help.add_command(label='How to use', command=hlp)
 root.config(menu=help)
-Label(root, image=note, bg="grey").grid(row=5, padx=10, columnspan=2)
 root.mainloop()
